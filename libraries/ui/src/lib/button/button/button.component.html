@@ -2,6 +2,7 @@
   class="btn"
   type="button"
   [ngStyle]="{ backgroundColor: hover ? Color[1] : Color[0] }"
+  [disabled]="disabled"
 >
   <span>
     <ng-content></ng-content>
