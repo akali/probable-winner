@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  NgZone,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -22,7 +23,7 @@ import {
   selector: 'hc-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements OnInit, OnDestroy {
   listItems = [...items];
@@ -31,10 +32,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
   destroyed = new Subject<boolean>();
 
-  constructor(private _changeRef: ChangeDetectorRef) {}
+  constructor(private _changeRef: ChangeDetectorRef, private _ngZone: NgZone) {}
 
   ngOnInit(): void {
-    setInterval(() => {}, 1000);
+    this._ngZone.runOutsideAngular(() => {
+      setInterval(() => {}, 1);
+    });
+
     this.searchFormControl.valueChanges
       .pipe(
         takeUntil(this.destroyed),
@@ -64,7 +68,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
   mapToItems(value: ListItem[]): ListItem[] {
     this.listItems = [...value];
-    this._changeRef.markForCheck();
+    // this._changeRef.markForCheck();
     return this.listItems;
   }
 }
