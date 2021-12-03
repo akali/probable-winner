@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
+import { ExitGuard } from '../guards/exit.guard';
+import { TestResolver } from '../resolvers/test.resolver';
+import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { DescComponent } from './desc/desc.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ListComponent } from './list/list.component';
@@ -9,6 +13,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -18,6 +23,10 @@ const routes: Routes = [
       {
         path: 'page',
         component: ListComponent,
+        canDeactivate: [ExitGuard],
+        resolve: {
+          items: TestResolver,
+        },
         data: {
           title: 'Страница',
           breadCrumbTitle: 'Страница',
@@ -46,6 +55,10 @@ const routes: Routes = [
             },
           },
         ],
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
       },
     ],
   },
