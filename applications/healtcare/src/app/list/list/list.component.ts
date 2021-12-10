@@ -32,6 +32,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
   searchFormControl = new FormControl('');
 
+  showSideMenu = false;
+
   destroyed = new Subject<boolean>();
 
   constructor(
@@ -86,6 +88,10 @@ export class ListComponent implements OnInit, OnDestroy {
     this.listItems = [...value];
     // this._changeRef.markForCheck();
     return this.listItems;
+  }
+
+  onClickShowMenu() {
+    this.showSideMenu = !this.showSideMenu;
   }
 
   canDeactivate() {

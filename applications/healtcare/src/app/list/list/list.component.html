@@ -1,16 +1,24 @@
-<a routerLink="../post">to Post</a>
-<ui-text-input
-  [label]="'Поиск'"
-  [control]="searchFormControl"
-  [type]="'text'"
-></ui-text-input>
-<div class="grid grid-cols-5 gap-10 px-10 mt-10">
-  <ui-card *ngFor="let item of getItems()">
-    <ng-container header>
-      <span>{{ item.Name }}</span>
-    </ng-container>
-    <ng-container body>
-      <span>{{ item.Description }}</span>
-    </ng-container>
-  </ui-card>
+<div class="flex">
+  <a routerLink="../post" class="mx-10">to Post</a>
+  <ui-button (click)="onClickShowMenu()">Show SideMenu</ui-button>
+</div>
+<div class="flex">
+  <ui-side-menu [show]="showSideMenu"></ui-side-menu>
+  <div class="flex flex-col">
+    <ui-text-input
+      [label]="'Поиск'"
+      [control]="searchFormControl"
+      [type]="'text'"
+    ></ui-text-input>
+    <div class="grid grid-cols-5 gap-10 px-10 mt-10">
+      <ui-card *ngFor="let item of getItems()">
+        <ng-container header>
+          <span>{{ item.Name }}</span>
+        </ng-container>
+        <ng-container body>
+          <span>{{ item.Description }}</span>
+        </ng-container>
+      </ui-card>
+    </div>
+  </div>
 </div>

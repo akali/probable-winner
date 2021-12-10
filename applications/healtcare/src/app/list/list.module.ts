@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { CardModule } from 'libraries/ui/src/lib/card';
 import { TextInputModule } from 'libraries/ui/src/lib/text-input';
 import { ButtonModule } from 'libraries/ui/src/lib/button';
+import { SideMenuModule } from 'libraries/ui/src/lib/side-menu/side-menu.module';
 
 @NgModule({
   declarations: [ListComponent, PostComponent, DescComponent, LayoutComponent],
@@ -17,6 +18,7 @@ import { ButtonModule } from 'libraries/ui/src/lib/button';
     CardModule,
     TextInputModule,
     ButtonModule,
+    SideMenuModule,
   ],
 })
 export class ListModule {}

@@ -5,19 +5,22 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
+import { LoaderService } from 'libraries/ui/src/lib/loader/loader.service';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { items, ListItem } from '../../models/list-item.model';
+import { GetDataService } from '../services/get-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TestResolver implements Resolve<ListItem[]> {
+  constructor(private _service: GetDataService) {}
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<ListItem[]> {
-    console.error('NEED GLOBAL LOADER');
-    return of(items).pipe(delay(3000));
+  ): Promise<ListItem[]> {
+    return this._service.getData();
   }
 }
