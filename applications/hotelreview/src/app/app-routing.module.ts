@@ -3,25 +3,37 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { NoPermPageComponent } from './shared/no-perm-page/no-perm-page.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import {AboutUsComponent} from "applications/hotelreview/src/app/shared/about-us/about-us.component";
 
 const routes: Routes = [
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./search/search.module').then((mod) => mod.SearchModule),
+  },
   {
     path: 'list',
     loadChildren: () =>
       import('./list/list.module').then((mod) => mod.ListModule),
     canLoad: [AuthGuard],
-    data: {
-      title: 'Лист',
-      hasBreadcrumbs: true,
-      breadCrumbTitle: 'Лист',
-      id: 0,
-      url: '/list',
-    },
+  },
+  {
+    path: 'hotel',
+    loadChildren: () =>
+      import('./hotel/hotel.module').then((mod) => mod.HotelModule),
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent,
   },
   {
     path: '403',
     component: NoPermPageComponent,
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  }
 ];
 
 @NgModule({
