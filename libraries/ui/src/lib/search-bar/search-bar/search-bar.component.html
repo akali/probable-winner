@@ -1,0 +1,25 @@
+<div id="cover">
+  <form
+    [formGroup]="searchForm"
+    (ngSubmit)="onSearchClick()"
+  >
+    <div class="tb">
+      <div class="td">
+        <input
+          type="text"
+          formControlName="query"
+          placeholder="Enter your city, place or whatever..."
+        />
+      </div>
+      <div class="td" id="s-cover">
+        <button
+          type="submit"
+        >
+          <div id="s-circle"></div>
+          <span></span>
+          <!--          <i class="fas fa-search"></i>-->
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
