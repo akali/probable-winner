@@ -6,6 +6,7 @@ import { DetailComponent } from './detail/detail.component';
 import {CommentModule} from "applications/hotelreview/src/app/hotel/comment/comment.module";
 import {CommentService} from "applications/hotelreview/src/app/hotel/comment/services/comment.service";
 import { LayoutComponent } from './layout/layout.component';
+import {HotelRoutingModule} from "applications/hotelreview/src/app/hotel/hotel-routing.module";
 
 
 
@@ -18,6 +19,7 @@ import { LayoutComponent } from './layout/layout.component';
   imports: [
     CommonModule,
     CommentModule,
+    HotelRoutingModule,
   ],
   exports: []
 })
