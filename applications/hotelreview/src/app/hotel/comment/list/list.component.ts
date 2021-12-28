@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CommentService} from "applications/hotelreview/src/app/hotel/comment/services/comment.service";
 
 @Component({
   selector: 'hr-comment-list',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  @Input() hotelId = '';
 
-  constructor() { }
+  constructor(
+    private commentService: CommentService,
+  ) { }
 
   ngOnInit(): void {
   }
