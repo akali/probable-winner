@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'healtcare';
+  title = 'hotelreview';
 
   constructor(private _router: Router) {}
 
@@ -18,5 +18,25 @@ export class AppComponent {
     };
     sessionStorage.setItem('auth', JSON.stringify(model));
     this._router.navigate(['list']);
+  }
+
+  onNavHomeClick() {
+    this._router.navigate(['/'])
+  }
+
+  onNavJoinClick() {
+    this._router.navigate(['/auth'])
+  }
+
+  get authenticated(): boolean {
+    return false;
+  }
+
+  get username(): string {
+    return ''
+  }
+
+  onNavLogoutClick() {
+
   }
 }

@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { TestInterceptor } from './interceptors/test.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { LoaderModule } from 'libraries/ui/src/lib/loader/loader.module';
+import { NavigationModule } from 'libraries/ui/src/lib/navigation/navigation.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { LoaderModule } from 'libraries/ui/src/lib/loader/loader.module';
     BreadcrumbModule.forRoot(),
     SharedModule,
     LoaderModule.forRoot(),
+    NavigationModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TestInterceptor, multi: true },

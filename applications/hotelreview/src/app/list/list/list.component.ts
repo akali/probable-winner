@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   items,
   ListItem,
-} from 'applications/healtcare/src/models/list-item.model';
+} from 'applications/hotelreview/src/models/list-item.model';
 import { Subject } from 'rxjs';
 import {
   debounceTime,
