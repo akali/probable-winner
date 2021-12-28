@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'hc-desc',
+  selector: 'hr-desc',
   templateUrl: './desc.component.html',
   styleUrls: ['./desc.component.scss'],
 })

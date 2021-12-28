@@ -5,13 +5,15 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import {CommentModule} from "applications/hotelreview/src/app/hotel/comment/comment.module";
 import {CommentService} from "applications/hotelreview/src/app/hotel/comment/services/comment.service";
+import { LayoutComponent } from './layout/layout.component';
 
 
 
 @NgModule({
   declarations: [
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,

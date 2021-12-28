@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hc-no-perm-page',
+  selector: 'hr-no-perm-page',
   templateUrl: './no-perm-page.component.html',
   styleUrls: ['./no-perm-page.component.scss']
 })
