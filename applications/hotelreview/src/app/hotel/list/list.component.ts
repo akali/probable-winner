@@ -25,6 +25,6 @@ export class ListComponent implements OnInit {
   }
 
   onNavigateClick(id: string) {
-    this.router.navigate([id])
+    this.router.navigate(["hotel", id]).catch((reason) => console.error(reason))
   }
 }

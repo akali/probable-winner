@@ -8,6 +8,8 @@ import {CommentService} from "applications/hotelreview/src/app/hotel/comment/ser
 import { LayoutComponent } from './layout/layout.component';
 import {HotelRoutingModule} from "applications/hotelreview/src/app/hotel/hotel-routing.module";
 import {HotelCardModule} from "libraries/ui/src/lib/hotel-card/hotel-card.module";
+import {CommentItemModule} from "libraries/ui/src/lib/comment-item/comment-item.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -22,6 +24,9 @@ import {HotelCardModule} from "libraries/ui/src/lib/hotel-card/hotel-card.module
     CommentModule,
     HotelRoutingModule,
     HotelCardModule,
+    CommentItemModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: []
 })

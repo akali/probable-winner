@@ -10,6 +10,7 @@ export interface CommentItem {
   hotelId: string;
   commentId: string;
   author: string;
+  text: string;
   votes: CommentVote[];
 }
 
@@ -21,8 +22,21 @@ export class CommentService {
     hotelId: "1",
     commentId: "1",
     author: "Zhanel",
-    votes: [],
-  }]
+    text: "Liked so much",
+    votes: [{
+      voter: "akali",
+      value: 1,
+    }],
+  }, {
+    hotelId: "1",
+    commentId: "2",
+    author: "akali",
+    text: "Agree",
+    votes: [{
+      voter: "Zhanel",
+      value: -1,
+    }],
+  }, ]
   commentRating(commentItem: CommentItem): number {
     return commentItem.votes.reduce((prev, cur): number => {
       return prev + cur.value;
@@ -45,12 +59,19 @@ export class CommentService {
     return comment;
   }
 
-  constructor(authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   voteComment(commentId: string, voter: string, value: -1 | 1) {
     this.comments =
       this.comments
-        .filter(comment => comment.commentId == commentId)
-        .map(comment => this.voteSingleComment(comment, voter, value));
+        .map(comment => comment.commentId == commentId ? this.voteSingleComment(comment, voter, value) : comment);
+  }
+
+  commentsByHotelId(hotelId: string): CommentItem[] {
+    return this.comments.filter(comment => comment.hotelId === hotelId);
+  }
+
+  ownComment(comment: CommentItem): boolean {
+    return comment.author === this.authService.getCurrentUsername();
   }
 }

@@ -35,6 +35,11 @@ const routes: Routes = [
     component: PageNotFoundComponent,
   },
   {
+    path: '',
+    redirectTo: '/search',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '/404',
     pathMatch: 'full',

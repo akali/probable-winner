@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoaderModule } from 'libraries/ui/src/lib/loader/loader.module';
 import { NavigationModule } from 'libraries/ui/src/lib/navigation/navigation.module';
 import {HotelCardModule} from "libraries/ui/src/lib/hotel-card/hotel-card.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,8 @@ import {HotelCardModule} from "libraries/ui/src/lib/hotel-card/hotel-card.module
     LoaderModule.forRoot(),
     NavigationModule,
     HotelCardModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TestInterceptor, multi: true },

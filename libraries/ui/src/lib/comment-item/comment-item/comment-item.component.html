@@ -1,23 +1,62 @@
 <div class="rounded shadow p-4 w-full ">
-  <div class="flex justify-between">
-    <div class="flex">
-      <div class="flex flex-col items-center">
-        <i class="fas fa-user fa-10x"></i>
-        {{author}}
+  <div class="flex w-full justify-between">
+    <div class="flex w-full">
+      <div class="flex">
+        <div class="flex flex-col items-center">
+          <i class="fas fa-user fa-10x"></i>
+          {{author}}
+        </div>
+      </div>
+      <div class="flex flex-col w-full justify-between">
+        <div class="flex w-full justify-between">
+          <div class="flex flex-col">
+            <p>{{comment}}</p>
+          </div>
+          <div class="flex" *ngIf="showButtons">
+            <button
+              class="h-10 bg-red-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+              type="submit"
+              (click)="onCommentDeleteClick.emit()"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+            <button
+              class="h-10 bg-green-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+              type="submit"
+              (click)="onCommentEditClick.emit()"
+            >
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <div class="flex justify-center items-center pr-2">
+            <p>
+              Rating: {{rating}}
+            </p>
+          </div>
+          <button
+            class="h-10 bg-green-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+            type="submit"
+            (click)="onLikeClick.emit()"
+          >
+            <i class="fas fa-thumbs-up"></i>
+            {{positiveVotes()}}
+          </button>
+          <button
+            class="h-10 bg-red-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+            type="submit"
+            (click)="onDislikeClick.emit()"
+          >
+            <i class="fas fa-thumbs-down"></i>
+            {{negativeVotes()}}
+          </button>
+        </div>
       </div>
 
-      <div class="flex flex-col">
-        <p>{{comment}}</p>
-      </div>
     </div>
 
-    <button
-      class="h-10 bg-red-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-      type="submit"
-      (click)="onCommentDeleteClick.emit()"
-    >
-      <i class="fas fa-trash"></i>
-    </button>
+
   </div>
 
 </div>

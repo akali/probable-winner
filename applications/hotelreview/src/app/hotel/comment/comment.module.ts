@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
+import {CommentItemModule} from "libraries/ui/src/lib/comment-item/comment-item.module";
 
 
 
@@ -12,7 +13,8 @@ import { ListComponent } from './list/list.component';
     ListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CommentItemModule,
   ]
 })
 export class CommentModule { }

@@ -57,4 +57,10 @@ export class HotelService {
         hotel.image.indexOf(query) !== -1;
     }
   }
+
+  getById(hotelId: string): HotelItem | null {
+    const filtered = this.getHotels().filter(hotel => hotel.id === hotelId);
+    if (filtered.length === 0) return null;
+    return filtered[0];
+  }
 }
