@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommentItem, CommentService} from "applications/hotelreview/src/app/hotel/comment/services/comment.service";
 import {AuthService} from "applications/hotelreview/src/app/services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'hr-comment-list',
@@ -14,6 +15,7 @@ export class ListComponent implements OnInit {
   constructor(
     private commentService: CommentService,
     private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class ListComponent implements OnInit {
   }
 
   onCommentDeleteClick(commentId: string) {
+    this.commentService.deleteComment(commentId);
   }
 
   ownComment(comment: CommentItem) {
@@ -32,7 +35,7 @@ export class ListComponent implements OnInit {
   }
 
   onCommentEditClick(commentId: string) {
-
+    this.router.navigate(['hotel', 'comment', commentId])
   }
 
   onLike(commentId: string) {

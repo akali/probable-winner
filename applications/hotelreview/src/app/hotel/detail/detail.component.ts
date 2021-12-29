@@ -43,5 +43,4 @@ export class DetailComponent implements OnInit {
     }
     this.hotel = this.hotelService.getById(hotelId as string) as HotelItem;
   }
-
 }

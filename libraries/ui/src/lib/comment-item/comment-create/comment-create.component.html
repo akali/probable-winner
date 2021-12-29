@@ -1,19 +1,26 @@
 <form [formGroup]="commentForm" (ngSubmit)="onCommentAddSubmit()">
-  <div class="rounded shadow p-4 w-full ">
-    <div class="flex justify-between">
-      <div class="flex">
+  <div class="rounded shadow p-4 w-full items bg-white">
+    <div class="flex justify-between items-center p-4">
+      <div class="flex w-full">
         <div class="w-full">
-          <textarea placeholder="Review" formControlName="comment" class="resize rounded-md"></textarea>
+          <textarea placeholder="Review" formControlName="comment" class="bg-gray-100 resize rounded-md w-full p-2"></textarea>
         </div>
       </div>
 
+    </div>
+    <div class="flex w-full justify-end">
       <button
-        class="h-10 bg-red-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+        class="h-10 bg-green-600 active:bg-green-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
         type="submit"
       >
-        Add comment
+        Save comment
+      </button>
+      <button
+        class="h-10 bg-red-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+        (click)="onDelete.emit()"
+      >
+        Delete comment
       </button>
     </div>
-
   </div>
 </form>

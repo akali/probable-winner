@@ -30,13 +30,13 @@ export class CommentService {
   }, {
     hotelId: "1",
     commentId: "2",
-    author: "akali",
+    author: "akali@g.co",
     text: "Agree",
     votes: [{
       voter: "Zhanel",
       value: -1,
     }],
-  }, ]
+  },]
   commentRating(commentItem: CommentItem): number {
     return commentItem.votes.reduce((prev, cur): number => {
       return prev + cur.value;
@@ -59,12 +59,28 @@ export class CommentService {
     return comment;
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    this.comments = this.loadComments();
+  }
+
+  private loadComments() {
+    let comments = localStorage.getItem('comments');
+    if (comments === null) {
+      comments = JSON.stringify(this.comments);
+    }
+    return JSON.parse(comments);
+  }
+
+  private saveComments() {
+    const comments = JSON.stringify(this.comments);
+    localStorage.setItem('comments', comments);
+  }
 
   voteComment(commentId: string, voter: string, value: -1 | 1) {
     this.comments =
       this.comments
         .map(comment => comment.commentId == commentId ? this.voteSingleComment(comment, voter, value) : comment);
+    this.saveComments();
   }
 
   commentsByHotelId(hotelId: string): CommentItem[] {
@@ -73,5 +89,22 @@ export class CommentService {
 
   ownComment(comment: CommentItem): boolean {
     return comment.author === this.authService.getCurrentUsername();
+  }
+
+  getCommentById(commentId: string): CommentItem | null {
+    const filtered = this.comments.filter(comment => comment.commentId === commentId);
+    if (filtered.length === 0) return null;
+    return filtered[0];
+  }
+
+  saveComment(comment: CommentItem) {
+    this.comments = this.comments.map(cur => cur.commentId === comment.commentId ? comment : cur);
+    this.saveComments();
+  }
+
+  deleteComment(commentId: string | undefined) {
+    if (commentId === undefined) return;
+    this.comments = this.comments.filter(cur => cur.commentId !== commentId);
+    this.saveComments();
   }
 }

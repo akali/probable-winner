@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {AuthService} from "applications/hotelreview/src/app/services/auth.service";
 
 @Component({
   selector: 'hr-root',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'hotelreview';
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private authService: AuthService) {}
 
   SignIn() {
     const model = {
@@ -29,14 +30,14 @@ export class AppComponent {
   }
 
   get authenticated(): boolean {
-    return false;
+    return this.authService.authenticated();
   }
 
   get username(): string {
-    return ''
+    return this.authService.getCurrentUsername();
   }
 
   onNavLogoutClick() {
-
+    this.authService.logout();
   }
 }

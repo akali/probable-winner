@@ -2,7 +2,28 @@
   <div class="text-blueGray-400 text-center mb-3 font-bold">
     <!-- <small>Or sign in with credentials</small> -->
   </div>
-  <form [formGroup]="signInForm" (ngSubmit)="onSignInSubmit()">
+  <form [formGroup]="mode === 'login' ? signInForm : signUpForm" (ngSubmit)="mode === 'login' ? onSignInSubmit() : onSignUpSubmit()">
+    <div *ngIf="mode === 'register'" class="relative w-full mb-3">
+      <label
+        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+        htmlFor="grid-password"
+      >
+        Name
+      </label>
+      <input
+        type="text"
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Name"
+        formControlName="name"
+      />
+      <span
+        *ngIf="(registerFormControl.name.touched) && registerFormControl.name.errors?.required">
+                <p class="text-red-700">
+                  Name is required
+                </p>
+              </span>
+    </div>
+
     <div class="relative w-full mb-3">
       <label
         class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -43,25 +64,13 @@
                 </p>
               </span>
     </div>
-    <!-- <div>
-      <label class="inline-flex items-center cursor-pointer">
-        <input
-          id="customCheckLogin"
-          type="checkbox"
-          class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded"
-        />
-        <span class="ml-2 text-sm font-semibold text-blueGray-600">
-          Remember me
-        </span>
-      </label>
-    </div> -->
 
     <div class="text-center mt-6">
       <button
-        class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+        class="bg-green-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
         type="submit"
       >
-        Sign In
+        {{mode === 'login' ? 'Sign In' : 'Sign Up'}}
       </button>
     </div>
   </form>
@@ -73,8 +82,8 @@
     </a>
   </div>
   <div class="w-1/2 text-right">
-    <a (click)="changeMode('register')" class="text-blueGray-200">
-      <small>Create new account</small>
+    <a (click)="flipMode()" class="text-blueGray-200">
+      <small>{{mode === 'login' ? 'Create new account' : 'Already have an account'}}</small>
     </a>
   </div>
 </div>

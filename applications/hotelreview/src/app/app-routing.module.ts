@@ -23,6 +23,11 @@ const routes: Routes = [
       import('./hotel/hotel.module').then((mod) => mod.HotelModule),
   },
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module').then((mod) => mod.AuthModule),
+  },
+  {
     path: 'about-us',
     component: AboutUsComponent,
   },

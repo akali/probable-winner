@@ -23,12 +23,12 @@ export class AuthComponent implements OnInit {
   @Output() onSignIn = new EventEmitter<SignInModel>();
   @Output() onSignUp = new EventEmitter<SignUpModel>();
   signInForm = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   })
   signUpForm = this.fb.group({
     name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
     password: ['', Validators.required],
   })
   get registerFormControl() {
@@ -72,5 +72,13 @@ export class AuthComponent implements OnInit {
 
   changeMode(mode: 'login' | 'register') {
     this.mode = mode;
+  }
+
+  flipMode() {
+    if (this.mode === 'login') {
+      this.mode = 'register';
+    } else {
+      this.mode = 'login';
+    }
   }
 }

@@ -18,6 +18,11 @@ const routes: Routes = [
         }],
       },
       {
+        path: 'comment',
+        loadChildren: () =>
+          import('./comment/comment.module').then((mod) => mod.CommentModule),
+      },
+      {
         path: ':hotel_id',
         component: DetailComponent,
       },
