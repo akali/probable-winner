@@ -19,6 +19,9 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.commentService.commentsUpdated.subscribe(() => {
+      this.comments = this.commentService.commentsByHotelId(this.hotelId);
+    });
     this.comments = this.commentService.commentsByHotelId(this.hotelId);
   }
 

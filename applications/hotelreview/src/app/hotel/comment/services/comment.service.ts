@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AuthService} from "applications/hotelreview/src/app/services/auth.service";
+import { Guid } from 'guid-typescript';
+import {Subject} from "rxjs";
 
 export interface CommentVote {
   voter: string;
@@ -37,6 +39,9 @@ export class CommentService {
       value: -1,
     }],
   },]
+
+  commentsUpdated = new Subject<void>();
+
   commentRating(commentItem: CommentItem): number {
     return commentItem.votes.reduce((prev, cur): number => {
       return prev + cur.value;
@@ -74,6 +79,7 @@ export class CommentService {
   private saveComments() {
     const comments = JSON.stringify(this.comments);
     localStorage.setItem('comments', comments);
+    this.commentsUpdated.next()
   }
 
   voteComment(commentId: string, voter: string, value: -1 | 1) {
@@ -105,6 +111,12 @@ export class CommentService {
   deleteComment(commentId: string | undefined) {
     if (commentId === undefined) return;
     this.comments = this.comments.filter(cur => cur.commentId !== commentId);
+    this.saveComments();
+  }
+
+  createComment(comment: CommentItem) {
+    comment.commentId = Guid.create().toString();
+    this.comments = [...this.comments, comment];
     this.saveComments();
   }
 }

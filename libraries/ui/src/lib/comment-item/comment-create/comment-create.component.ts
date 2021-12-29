@@ -27,6 +27,7 @@ export class CommentCreateComponent implements OnInit {
   onCommentAddSubmit(): void {
     if (this.commentForm.get('comment')?.valid) {
       this.onDone.emit(this.commentForm.get('comment')?.value);
+      this.commentForm.get('comment')?.setValue('');
     }
   }
 }
