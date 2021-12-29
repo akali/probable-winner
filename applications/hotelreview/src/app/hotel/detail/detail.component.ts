@@ -36,6 +36,10 @@ export class DetailComponent implements OnInit {
 
   constructor(private hotelService: HotelService, private route: ActivatedRoute, private router: Router) { }
 
+  getRating(hotel: HotelItem) {
+    return this.hotelService.getHotelRating(hotel);
+  }
+
   ngOnInit(): void {
     const hotelId = this.route.snapshot.paramMap.get('hotel_id');
     if (hotelId == null || this.hotelService.getById(hotelId as string) == null) {

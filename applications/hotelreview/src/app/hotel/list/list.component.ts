@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HotelService} from "applications/hotelreview/src/app/hotel/services/hotel.service";
+import {HotelItem, HotelService} from "applications/hotelreview/src/app/hotel/services/hotel.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -26,5 +26,9 @@ export class ListComponent implements OnInit {
 
   onNavigateClick(id: string) {
     this.router.navigate(["hotel", id]).catch((reason) => console.error(reason))
+  }
+
+  getRating(hotel: HotelItem) {
+    return this.hotelService.getHotelRating(hotel);
   }
 }

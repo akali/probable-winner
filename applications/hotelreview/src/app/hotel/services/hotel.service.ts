@@ -36,18 +36,36 @@ export class HotelService {
     votes: [],
   }]
 
+  private saveHotels() {
+    const hotels = JSON.stringify(this.hotels);
+    localStorage.setItem('hotels', hotels);
+    // this.commentsUpdated.next()
+  }
+
+  private loadHotels() {
+    let hotels = localStorage.getItem('hotels');
+    if (hotels === null) {
+      hotels = JSON.stringify(this.hotels);
+    }
+    return JSON.parse(hotels);
+  }
+
+
   getHotelRating(hotel: HotelItem): number {
+    if (hotel.votes.length === 0) return 0;
     return hotel.votes.map(vote => vote.rating)
       .map(rating => rating as unknown as number)
       .reduce((prev, cur) => prev + cur, 0)
-      / hotel.votes.length
+      / hotel.votes.length;
   }
 
   getHotels(): HotelItem[] {
     return this.hotels;
   }
 
-  constructor() { }
+  constructor() {
+    this.hotels = this.loadHotels();
+  }
 
   hasQuery(query: string): (hotel: HotelItem) => boolean {
     return (hotel: HotelItem): boolean => {
@@ -62,5 +80,28 @@ export class HotelService {
     const filtered = this.getHotels().filter(hotel => hotel.id === hotelId);
     if (filtered.length === 0) return null;
     return filtered[0];
+  }
+
+  vote(hotel: HotelItem | null, voter: string, rating: HotelRating) {
+    if (hotel === null) return;
+    this.hotels = this.getHotels().map(cur => {
+      if (hotel.id !== cur.id) {
+        return cur;
+      }
+      const filtered = cur.votes.filter(curVote => curVote.voter === voter);
+      if (filtered.length === 0) {
+        cur.votes = [{
+          voter: voter,
+          rating: rating,
+        }]
+      } else {
+        cur.votes = cur.votes.map(vote => vote.voter === voter ? {
+          voter: voter,
+          rating: rating,
+        } : vote)
+      }
+      return cur;
+    })
+    this.saveHotels();
   }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import { CommentCreateComponent } from './comment-create/comment-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {StarblockModule} from "libraries/ui/src/lib/starblock/starblock.module";
 
 
 
@@ -15,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    StarblockModule,
   ],
   exports: [
     CommentItemComponent,

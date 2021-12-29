@@ -3,23 +3,25 @@
     <div class="flex justify-between items-center p-4">
       <div class="flex w-full">
         <div class="w-full">
-          <textarea placeholder="Review" formControlName="comment" class="bg-gray-100 resize rounded-md w-full p-2"></textarea>
+          <textarea placeholder="Review" formControlName="comment"
+                    class="bg-gray-100 resize rounded-md w-full p-2"></textarea>
         </div>
       </div>
-
     </div>
+    <ui-starblock (rating)="onRatingUpdate($event)"></ui-starblock>
     <div class="flex w-full justify-end">
       <button
         class="h-10 bg-green-600 active:bg-green-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
         type="submit"
       >
-        Save comment
+        Save review
       </button>
       <button
+        *ngIf="mode === 'edit'"
         class="h-10 bg-red-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
         (click)="onDelete.emit()"
       >
-        Delete comment
+        Delete review
       </button>
     </div>
   </div>

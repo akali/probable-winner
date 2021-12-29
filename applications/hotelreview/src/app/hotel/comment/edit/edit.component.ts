@@ -31,7 +31,7 @@ export class EditComponent implements OnInit {
     if (this.comment !== undefined) {
       this.comment.text = content;
       this.commentService.saveComment(this.comment);
-      this.router.navigate(['search'])
+      this.router.navigate(['hotel', this.comment.hotelId])
     }
   }
 

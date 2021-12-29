@@ -6,6 +6,7 @@
     [statTitle]="hotel.name"
     [statSubtitle]="hotel.city"
     [statIconColor]="'bg-green-600'"
+    [rating]="getRating(hotel)"
     (onIconClick)="onNavigateClick(hotel.id)"
     class="pb-2 mb-2 max-w-prose"
   ></ui-hotel-card>

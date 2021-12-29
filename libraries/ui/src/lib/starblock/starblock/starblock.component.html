@@ -1,0 +1,14 @@
+<div class="flex p-4">
+  <button *ngFor="let starButton of starButtons"
+          type="button"
+          class="h-8 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+          [ngClass]="{
+                'bg-yellow-700 active:bg-yellow-800' : starButton.index <= _rating,
+                'bg-yellow-300 active:bg-yellow-400' : starButton.index > _rating
+                }"
+          (click)="onStarClick(starButton.index)"
+  >
+    <i class="fas fa-star"></i>
+  </button>
+
+</div>
