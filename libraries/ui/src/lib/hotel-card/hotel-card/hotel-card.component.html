@@ -2,11 +2,11 @@
   class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg p-4"
 >
   <div class="flex flex-row p-4">
-    <div class="flex pr-4">
+    <div class="flex pr-4 max-w-150-px max-w-xs">
       <img
         alt="..."
         src="{{image}}"
-        class="shadow-xl h-auto align-middle border-none max-w-150-px"
+        class="align-middle border-none"
       />
     </div>
     <div class="flex-auto pl-2">
@@ -40,8 +40,11 @@
 <!--        ></i>-->
 <!--        {{ statPercent }}%-->
 <!--      </span>-->
-      <span class="whitespace-wrap">{{ statDescripiron }}</span>
+        <span class="mr-2">
+          Rating: {{ rating }} / 5
+        </span>
       </p>
+      <span class="whitespace-wrap">{{ statDescription }}</span>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@ import { TestInterceptor } from './interceptors/test.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { LoaderModule } from 'libraries/ui/src/lib/loader/loader.module';
 import { NavigationModule } from 'libraries/ui/src/lib/navigation/navigation.module';
+import {HotelCardModule} from "libraries/ui/src/lib/hotel-card/hotel-card.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { NavigationModule } from 'libraries/ui/src/lib/navigation/navigation.mod
     SharedModule,
     LoaderModule.forRoot(),
     NavigationModule,
+    HotelCardModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TestInterceptor, multi: true },

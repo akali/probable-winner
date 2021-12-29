@@ -7,6 +7,7 @@ import {CommentModule} from "applications/hotelreview/src/app/hotel/comment/comm
 import {CommentService} from "applications/hotelreview/src/app/hotel/comment/services/comment.service";
 import { LayoutComponent } from './layout/layout.component';
 import {HotelRoutingModule} from "applications/hotelreview/src/app/hotel/hotel-routing.module";
+import {HotelCardModule} from "libraries/ui/src/lib/hotel-card/hotel-card.module";
 
 
 
@@ -20,6 +21,7 @@ import {HotelRoutingModule} from "applications/hotelreview/src/app/hotel/hotel-r
     CommonModule,
     CommentModule,
     HotelRoutingModule,
+    HotelCardModule,
   ],
   exports: []
 })

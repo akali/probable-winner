@@ -1,11 +1,15 @@
-<ui-navbar
-  (onHomeClick)="onNavHomeClick()"
-  (onJoinClick)="onNavJoinClick()"
-  (onLogoutClick)="onNavLogoutClick()"
-  [authenticated]="this.authenticated"
-  [username]="this.username"
-></ui-navbar>
-<ui-loader></ui-loader>
-<!--<a (click)="SignIn()">Click Here</a>-->
-<!--<ui-breadcrumb></ui-breadcrumb>-->
-<router-outlet></router-outlet>
+<main class="">
+  <div class="container mx-auto">
+    <ui-navbar
+      (onHomeClick)="onNavHomeClick()"
+      (onJoinClick)="onNavJoinClick()"
+      (onLogoutClick)="onNavLogoutClick()"
+      [authenticated]="this.authenticated"
+      [username]="this.username"
+    ></ui-navbar>
+    <ui-loader></ui-loader>
+    <!--<a (click)="SignIn()">Click Here</a>-->
+    <!--<ui-breadcrumb></ui-breadcrumb>-->
+    <router-outlet></router-outlet>
+  </div>
+</main>
