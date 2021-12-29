@@ -26,12 +26,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const model = JSON.parse(sessionStorage.getItem('auth') as string);
-    if (model) {
+    // const model = JSON.parse(sessionStorage.getItem('auth') as string);
+    // if (model) {
       return true;
-    }
+    // }
 
-    return this._router.parseUrl('403');
+    // return this._router.parseUrl('403');
   }
 
   canActivateChild(
@@ -42,11 +42,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const model = JSON.parse(sessionStorage.getItem('auth') as string);
-    if (model && model.name === 'Ilias') {
+    // const model = JSON.parse(sessionStorage.getItem('auth') as string);
+    // if (model && model.name === 'Ilias') {
       return true;
-    }
-    return this._router.parseUrl('403');
+    // }
+    // return this._router.parseUrl('403');
   }
 
   canLoad(
@@ -57,11 +57,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const model = JSON.parse(sessionStorage.getItem('auth') as string);
-    if (model) {
+    // const model = JSON.parse(sessionStorage.getItem('auth') as string);
+    // if (model) {
       return true;
-    }
-
-    return this._router.parseUrl('403');
+    // }
+    //
+    // return this._router.parseUrl('403');
   }
 }

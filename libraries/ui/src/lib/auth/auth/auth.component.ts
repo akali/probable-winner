@@ -18,7 +18,7 @@ export class SignUpModel {
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  @Input() mode: 'login' | 'register' = 'login'
+  @Input() mode: 'login' | 'register' = 'login';
   @Input() error: string = '';
   @Output() onSignIn = new EventEmitter<SignInModel>();
   @Output() onSignUp = new EventEmitter<SignUpModel>();

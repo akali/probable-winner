@@ -12,14 +12,14 @@ export class AppComponent {
 
   constructor(private _router: Router, private authService: AuthService) {}
 
-  SignIn() {
-    const model = {
-      name: 'Ilias',
-      token: 'asdhajhsdgjhasgdjasgdjhasgdjabsdk',
-    };
-    sessionStorage.setItem('auth', JSON.stringify(model));
-    this._router.navigate(['list']);
-  }
+  // SignIn() {
+  //   const model = {
+  //     name: 'Ilias',
+  //     token: 'asdhajhsdgjhasgdjasgdjhasgdjabsdk',
+  //   };
+  //   sessionStorage.setItem('auth', JSON.stringify(model));
+  //   this._router.navigate(['list']);
+  // }
 
   onNavHomeClick() {
     this._router.navigate(['/'])
